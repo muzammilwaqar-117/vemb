@@ -1,0 +1,99 @@
+
+<div class="container-fluid">
+  <form [formGroup]="signupform" (submit)="onSignup()"  *ngIf="!isloading">
+    <mat-spinner *ngIf="isloading"></mat-spinner>
+  <div class="row">
+    <div class="col col-lg-4 col-md-4">
+
+                <!-- Full name Field Field -->
+                <mat-form-field class="matformfield-left" >
+                  <input matInput  type="text" placeholder="Full Name"  formControlName="fullName">
+                   <mat-error *ngIf="signupform.get('fullName').invalid">Please Enter A valid Name</mat-error>
+                </mat-form-field>
+
+
+                <!-- Email Field -->
+                <mat-form-field  class="matformfield-left">
+                <input matInput  type="email" placeholder="E-mail"  formControlName="email">
+                 <mat-error *ngIf="signupform.get('email').invalid">Please Enter A valid Email</mat-error>
+                </mat-form-field>
+                <br>
+
+                <!-- Password Field -->
+                <mat-form-field class="matformfield-left" >
+                  <input  matInput   type="password" placeholder="Password" formControlName="password" >
+                   <mat-error *ngIf="signupform.get('password').invalid">Please Enter A valid Password </mat-error>
+                </mat-form-field>
+              <!-- /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/     " regex for pass check  " -->
+                <br>
+
+                <!-- Phone number Field -->
+                <mat-form-field class="matformfield-left" >
+                  <input  matInput    type="tel" placeholder="Phone Number" formControlName="phoneNumber" >
+                   <mat-error *ngIf="signupform.get('phoneNumber').invalid">Please Enter A valid Phone Number in format +9230*******</mat-error>
+                </mat-form-field>
+
+                <!-- Address Field -->
+                <mat-form-field class="matformfield-left">
+                  <input  matInput    type="text" placeholder="Full Address" formControlName="fullAddress">
+                   <mat-error *ngIf="signupform.get('fullAddress').invalid">Please Enter A valid Address</mat-error>
+                </mat-form-field>
+
+                <!-- C.N.I.C Number Field -->
+                <mat-form-field class="matformfield-left">
+                  <input  matInput    type="number" placeholder="CNIC Number"  formControlName="cnicNumber">
+                   <mat-error *ngIf="signupform.get('cnicNumber').invalid">Please Enter A valid CNIC Number without dashes in it</mat-error>
+                </mat-form-field>
+
+                <!-- Date of Birth -->
+                <mat-form-field class="matformfield-left">
+                  <input  matInput type="date" placeholder="Date of Birth" formControlName="dob">
+                </mat-form-field>
+
+                <!--Gender-->
+                <br>
+                <mat-label >Choose your Gender</mat-label>
+                <mat-radio-group  formControlName="genderStatus" aria-labelledby="accountStatus-radio-group-label" class="accountStatus-radio-group matformfield-left">
+                  <mat-radio-button class="accountStatus-radio-button" *ngFor="let status of genderStatus" [value]="status">
+                    {{status}}
+                  </mat-radio-button>
+                </mat-radio-group>
+
+
+                <!--Account Status Field-->
+               <!-- <mat-label>Choose your account setting</mat-label>
+                <mat-radio-group  formControlName="accountStatus"
+                  aria-labelledby="accountStatus-radio-group-label"
+                  class="accountStatus-radio-group matformfield-left">
+                  <mat-radio-button class="accountStatus-radio-button" *ngFor="let status of accStatus" [value]="status">
+                    {{status}}
+                  </mat-radio-button>
+                </mat-radio-group>
+--->
+
+    </div>
+
+
+    <div class="col col-lg-4 col-md-4 ">
+      <div>
+        <button mat-stroked-button type="button" (click)="filepicker.click()">Choose Image</button>
+        <mat-label>Choose you Cnic Image "Front Side" clear picture</mat-label>
+        <input type="file" #filepicker (change)="onImagePicked($event)">
+      </div>
+      <div class="image-preview" *ngIf="imagePreview !== '' && imagePreview && signupform.get('image').valid">
+        <img [src]="imagePreview" [alt]="signupform.value.title">
+      </div>
+
+    </div>
+  </div>
+  <br>
+  <div class="row submitrow">
+    <div class="col">
+    <!-- Submit button -->
+    <button mat-raised-button color="accent" type="submit" style="align-self: center" class="submitButton">Signup</button>
+  </div>
+  </div>
+</form>
+
+</div>
+

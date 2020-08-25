@@ -1,0 +1,29 @@
+<h1 class="admin-panel" style="align-items: center">Admin Panel</h1>
+<mat-spinner *ngIf="isloading"></mat-spinner>
+
+<mat-accordion multi="true" *ngIf="unverifiedUsers.length>0 && !isloading">
+  <mat-expansion-panel *ngFor="let user of unverifiedUsers">
+    <mat-expansion-panel-header>
+      <p><b>Full Name: </b>{{user.fullName}} - <b>CNIC:</b> {{user.cnicNumber}}</p>
+
+    </mat-expansion-panel-header>
+    <p>Email: {{user.email}}</p>
+    <p>PhoneNumber: {{user.phoneNumber}}</p>
+
+    <p>Address: {{user.fullAddress}}</p>
+    <p>Date of Birth: {{user.dob}}</p>
+
+    <div class="post-image">
+      <img [src]="user.imagePath" [alt]="user.fullName">
+    </div>
+    <mat-action-row >
+      <!--*ngIf="userIsAuthenticated && userId === user.creator"-->
+      <a mat-flat-button color="primary" (click)="onApprove(user.cnicNumber)"  > Approve</a>
+      <button mat-flat-button color="warn" (click)="onDelete(user.cnicNumber)" >DELETE</button>
+    </mat-action-row>
+  </mat-expansion-panel>
+</mat-accordion>
+<mat-paginator [length]="totalUnverifiedUsers" [pageSize]="unverifiedUsersPerPage" [pageSizeOptions]="pageSizeOptions" (page)="onChangedPage($event)" *ngIf="unverifiedUsers.length>0">
+
+</mat-paginator>
+<p class="info-text mat-body-1" *ngIf="unverifiedUsers.length<=0 && !isloading">No Posts Availables.!</p>

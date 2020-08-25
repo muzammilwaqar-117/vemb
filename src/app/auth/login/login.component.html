@@ -1,0 +1,119 @@
+<!--material design-->
+<!--
+<div>
+<h1 class="topheading">Login To Your V.E.M.B Account</h1>
+
+<mat-card>
+  <mat-spinner *ngIf="isloading" ></mat-spinner>
+  <form (submit)="onLogin(loginform)" #loginform="ngForm" *ngIf="!isloading">
+    <mat-form-field >
+    <input matInput name="cnicNumber" ngModel
+     type="email" placeholder="CNIC"  #cnicInput="ngModel" required>
+     <mat-error *ngIf="cnicInput.invalid">Please Enter A valid CNIC</mat-error>
+    </mat-form-field>
+    <br>
+    <mat-form-field >
+      <input  matInput name="password" ngModel  type="password" placeholder="******" #passwordInput="ngModel" required>
+       <mat-error *ngIf="passwordInput.invalid">Please Enter A valid Password</mat-error>
+    </mat-form-field>
+
+<br>
+    <button mat-raised-button color="accent" type="submit" *ngIf="!isloading">Login</button>
+
+  </form>
+</mat-card>
+</div>-->
+<!--Popup design-->
+<!--
+this is a pop up sign in
+
+<mat-card>
+<mat-spinner *ngIf="isloading"></mat-spinner>
+<div id="id01" class="modal">
+  <form class="modal-content animate" action="/action_page.php" method="post" (submit)="onLogin(loginform)" #loginform="ngForm" *ngIf="!isloading">
+    <div class="imgcontainer">
+      <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+      <img src="../../../assets/images/img_avatar2.png" alt="Avatar" class="avatar">
+    </div>
+
+    <div class="container">
+      <label for="cnicNumber"><b>CNIC</b></label>
+      <input type="text" placeholder="Enter Username" name="cnicNumber" required>
+      <input matInput name="cnicNumber" ngModel type="text" placeholder="Enter CNIC" #cnicInput="ngModel" required>
+     <mat-error *ngIf="cnicInput.invalid">Please Enter A valid CNIC</mat-error>
+
+
+      <label for="psw"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="psw" required>
+      <input  matInput name="password" ngModel  type="password" placeholder="Enter Password" #passwordInput="ngModel" required>
+
+      <button mat-raised-button color="accent" type="submit" *ngIf="!isloading">Login</button>
+
+      <ng-content select="selector"></ng-content><label>
+        <input type="checkbox" checked="checked" name="remember"> Remember me
+      </label>
+    </div>
+
+    <div class="container" style="background-color:#f1f1f1">
+      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+      <br>
+      <span class="psw">Forgot <a href="#">password?</a></span>
+    </div>
+  </form>
+</div>
+</mat-card>-->
+<mat-spinner *ngIf="isloading" ></mat-spinner>
+<div class="top">
+<img class="wave" src="../../../assets/images/wave.png">
+	<div class="container">
+		<div class="img">
+			<img src="../../../assets/images/bg.svg">
+		</div>
+		<div class="login-content">
+			<form (submit)="onLogin(loginform)" #loginform="ngForm" *ngIf="!isloading">
+				<img src="../../../assets/images/avatar.svg">
+				<h2 class="title">Welcome</h2>
+           		<div class="input-div one">
+           		   <div class="i">
+           		   		<i class="fas fa-user"></i>
+           		   </div>
+           		   <div class="div">
+                    <input matInput name="cnicNumber" placeholder="CNIC" class="input" ngModel type="string" #cnicInput="ngModel" required>
+           		   </div>
+           		</div>
+           		<div class="input-div pass">
+           		   <div class="i">
+           		    	<i class="fas fa-lock"></i>
+           		   </div>
+           		   <div class="div">
+                  <input  matInput name="password" ngModel  type="password" placeholder="Password"  class="input" #passwordInput="ngModel" required>
+            	   </div>
+            	</div>
+            	<a href="#" >Forgot Password?</a>
+            	<input type="submit" class="btn" value="Login" *ngIf="!isloading">
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+
+const inputs = document.querySelectorAll(".input");
+
+function addcl(){
+	let parent = this.parentNode.parentNode;
+	parent.classList.add("focus");
+}
+
+function remcl(){
+	let parent = this.parentNode.parentNode;
+	if(this.value == ""){
+		parent.classList.remove("focus");
+	}
+}
+
+inputs.forEach(input => {
+	input.addEventListener("focus", addcl);
+	input.addEventListener("blur", remcl);
+});
+
+</script>

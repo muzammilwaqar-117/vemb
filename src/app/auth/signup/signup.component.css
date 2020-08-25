@@ -1,0 +1,88 @@
+.container-fluid
+{
+  background-color: rgb(252, 252, 252);
+}
+
+.right
+{
+  align-content: right;
+}
+.left
+{
+  align-content: left;
+}
+.mat-stepper-vertical {
+  margin-top: 8px;
+}
+
+.mat-form-field {
+  margin-top: 16px;
+}
+.matformfield-left
+{
+  padding-right:1rem;
+}
+.matformfield-right
+{
+  padding-left:2%;
+}
+mat-form-field
+{
+  width: 100%;
+  align-items: left;
+
+}
+mat-label
+{
+  padding-left: 5px;
+}
+mat-spinner
+{
+  margin: auto;
+}
+input[type="file"]
+{
+  visibility: hidden;
+}
+
+.image-preview
+{
+  height: 5rem;
+  margin: 1rem 0;
+}
+.submitrow
+{
+  margin-bottom: 5rem;
+}
+.image-preview img
+{
+  height: 100%;
+}
+.submitButton
+{
+
+  margin-left: 25%;
+  width: 50%;
+}
+.mat-card
+{
+  margin-top: 1rem;
+
+}
+mat-grid-tile {
+  background: #fff;
+}
+input[type="radio"]
+{
+  visibility: hidden;
+}
+.accountStatus-radio-group
+{
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0;
+}
+.accountStatus-radio-button
+ {
+  margin: 5px;
+}
